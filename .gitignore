@@ -1,0 +1,14 @@
+# Everything a build downloads or produces.
+/build/
+__pycache__/
+
+# Never committed: signing keys.
+*.pem
+*.key
+*.p12
+*.pfx
+
+# Build products live in releases, never in the tree.
+*.wasm
+*.aot
+*.moy.zip

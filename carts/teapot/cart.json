@@ -1,0 +1,12 @@
+{
+  "id": "teapot",
+  "name": "Jet Teapot",
+  "version": 1,
+  "release": "teapot-v1",
+  "folder": "teapot.moy",
+  "chips": ["esp32s3", "esp32p4"],
+  "licence": {
+    "spdx": "MIT",
+    "file": "LICENSES.txt"
+  }
+}

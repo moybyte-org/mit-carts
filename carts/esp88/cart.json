@@ -1,0 +1,12 @@
+{
+  "id": "esp88",
+  "name": "ESP 88",
+  "version": 1,
+  "release": "esp88-v1",
+  "folder": "esp88.moy",
+  "chips": ["esp32s3", "esp32p4"],
+  "licence": {
+    "spdx": "MIT",
+    "file": "LICENSES.txt"
+  }
+}
