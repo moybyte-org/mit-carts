@@ -21,21 +21,21 @@
         "size": 1886,
         "sha256": "b526fb14126ea64979b108de6980d36bab79794b0f642aba28014a2f114ff83f"
       },
-      "source": "https://github.com/moybyte-org/mit-carts/tree/e2154aeb0d933eb0cf36e97c56cc4140613fa065/carts/esp88",
+      "source": "https://github.com/moybyte-org/mit-carts/tree/36ea8cc40d19b63d5cfca954766f8c94a3205c3a/carts/esp88",
       "release": "https://github.com/moybyte-org/mit-carts/releases/tag/esp88-v1",
       "assets": [
         {
           "name": "esp88.moy.zip",
           "url": "https://github.com/moybyte-org/mit-carts/releases/download/esp88-v1/esp88.moy.zip",
-          "size": 1415092,
-          "sha256": "fce1e4511e74077042319fcc636450eed33e410dbfa545da157af630444a303f",
+          "size": 1415030,
+          "sha256": "ac4ac110d28f48a757fad276e7660aa1040898b2c4a7f76272bcd06264b71be7",
           "files": {
             "LICENSES.txt": {
               "sha256": "b526fb14126ea64979b108de6980d36bab79794b0f642aba28014a2f114ff83f",
               "size": 1886
             },
             "SOURCE.txt": {
-              "sha256": "be550a5a929aa41f7a9152d9b9e1536e4fe0fe31d6c104de6ccc8af8540b7ae0",
+              "sha256": "7833e7bfdc53fd2fc90d93f02e0d91ad3449c69dc2e7ac29e07cf5e1d6ed5a54",
               "size": 3046
             },
             "assets.bin": {
@@ -46,13 +46,13 @@
               "sha256": "d67c6a0fbea4ee776c04cb1455779681e6035e9f6a0fdc481fec133a761bd753",
               "size": 67
             },
-            "main.esp32p4.aot": {
-              "sha256": "67d7a2c498c6d7c35deb1bbe03be43a9687233b35736c29948cc762c0f7edd0d",
-              "size": 480610
+            "main.esp32p4.f1.aot": {
+              "sha256": "fb9159cc7fd69d9a05f4e0f69b9ab7ddbf5b006f0013920e7ab3ecc5a62a557f",
+              "size": 480573
             },
-            "main.esp32s3.aot": {
-              "sha256": "9139d75832e8d1e100fa786546db963046e28662074183bb986246178a91ae1f",
-              "size": 494270
+            "main.esp32s3.f1.aot": {
+              "sha256": "7ca03e398d8f60c08ac0095e1e66a99fac45a2c5fbb21a488a9b6067bae9d822",
+              "size": 494233
             },
             "main.wasm": {
               "sha256": "868f17fb1d92f440923d6b3d1e6d86e2250930b596305704672694f0c50e47c5",
@@ -68,26 +68,26 @@
       "source_asset": {
         "name": "esp88-v1-source.tar.gz",
         "url": "https://github.com/moybyte-org/mit-carts/releases/download/esp88-v1/esp88-v1-source.tar.gz",
-        "size": 239335,
-        "sha256": "7a76d45ed5e62b487998a6ae7e2a4ed4e35d53b089b56aeabdb4d0d85a2d3301"
+        "size": 241379,
+        "sha256": "373305305c7ad17a35598a31aae4af0333af76b288c1269c4d3a7c764601a994"
       },
       "external": [],
       "build": {
-        "commit": "e2154aeb0d933eb0cf36e97c56cc4140613fa065",
+        "commit": "36ea8cc40d19b63d5cfca954766f8c94a3205c3a",
         "keys": {
-          "esp32p4": "fork a7b71791f0e7b36e34d7d8abaef57b1d64d6f8e7\ntarget riscv32\ncpu generic-rv32\nabi ilp32f\nfeatures +m,+a,+f,+c,+fast-unaligned-access\nopt 3\nsize 3\nbounds 1\nstack-bounds 1\nxip 0\n",
-          "esp32s3": "fork a7b71791f0e7b36e34d7d8abaef57b1d64d6f8e7\ntarget xtensa\ncpu esp32s3\nabi -\nfeatures -\nopt 3\nsize 0\nbounds 1\nstack-bounds 1\nxip 0\n"
+          "esp32p4": "format 1\ntarget riscv32\ncpu generic-rv32\nabi ilp32f\nfeatures +m,+a,+f,+c,+fast-unaligned-access\nopt 3\nsize 3\nbounds 1\nstack-bounds 1\nxip 0\n",
+          "esp32s3": "format 1\ntarget xtensa\ncpu esp32s3\nabi -\nfeatures -\nopt 3\nsize 0\nbounds 1\nstack-bounds 1\nxip 0\n"
         },
         "modules": {
           "esp32p4": {
-            "name": "main.esp32p4.aot",
-            "unsigned_sha256": "27149637e16c6fe3bea666a44984f3aba4a395350e3d6b644520f4e4b867a704",
-            "unsigned_size": 480338
+            "name": "main.esp32p4.f1.aot",
+            "unsigned_sha256": "102173ab38aa072a62dac613f3d9604d5e7881894f043adde5f881848b1a05a7",
+            "unsigned_size": 480301
           },
           "esp32s3": {
-            "name": "main.esp32s3.aot",
-            "unsigned_sha256": "680cfed3b718235898aca3a8febdfc5b8e2495f3dfedbe6137e6864948be8631",
-            "unsigned_size": 493998
+            "name": "main.esp32s3.f1.aot",
+            "unsigned_sha256": "ebabc3940c329eab89f315caa0e0a0ba9a723b12fe3c6db5124ee18535c46146",
+            "unsigned_size": 493961
           }
         },
         "pins": {
@@ -102,10 +102,10 @@
             "url": "https://github.com/CubeCoders/JetExamples/tree/57b05a240f5bcaa02a18d62a1206ce7053dc09dc"
           },
           "moybyte": {
-            "commit": "b9793f974ff49332697806814210d5b9aa1512a5",
+            "commit": "925af7d360bc258b48f2eb0811f9787657c6d383",
             "note": "the module build path, scripts/build.py's MOYBYTE_FILES (in the source bundle under moybyte/); device/moy_ota.py only checks the signatures",
-            "tree_sha256": "db7e0713f2fc751c18d355a567953d5c9d446c92a73d3686f0c07ef85bbdc521",
-            "url": "https://github.com/moybyte-org/moybyte/tree/b9793f974ff49332697806814210d5b9aa1512a5"
+            "tree_sha256": "247340d28c544fd3ade3254f7fdd75f20ce2347d10865960086d5f59e9210948",
+            "url": "https://github.com/moybyte-org/moybyte/tree/925af7d360bc258b48f2eb0811f9787657c6d383"
           },
           "wamr-fork": {
             "commit": "a7b71791f0e7b36e34d7d8abaef57b1d64d6f8e7",
@@ -146,34 +146,34 @@
         "size": 2695,
         "sha256": "bdb7ed2382102071ea37616de813c9d84c4b6a1234f3d4294fa2efd7cedd68f3"
       },
-      "source": "https://github.com/moybyte-org/mit-carts/tree/e2154aeb0d933eb0cf36e97c56cc4140613fa065/carts/teapot",
+      "source": "https://github.com/moybyte-org/mit-carts/tree/36ea8cc40d19b63d5cfca954766f8c94a3205c3a/carts/teapot",
       "release": "https://github.com/moybyte-org/mit-carts/releases/tag/teapot-v1",
       "assets": [
         {
           "name": "teapot.moy.zip",
           "url": "https://github.com/moybyte-org/mit-carts/releases/download/teapot-v1/teapot.moy.zip",
-          "size": 843436,
-          "sha256": "91b5890352004c142a179bc48b69f59acd1f46773acbf58351a8dee5c6235678",
+          "size": 843374,
+          "sha256": "e9ddfcabdd0055eb36841b0bf65d6072112f9ed38354a4edb6614b96b40ec8d2",
           "files": {
             "LICENSES.txt": {
               "sha256": "bdb7ed2382102071ea37616de813c9d84c4b6a1234f3d4294fa2efd7cedd68f3",
               "size": 2695
             },
             "SOURCE.txt": {
-              "sha256": "a3815d6c8297cd5a3cdd307c9c27ecccb1583697ef7cb30a282c37250447ed88",
+              "sha256": "96481b5e8a2e4d39b37d05a7b7fa51d5b6952f8a435499049aaf7e58856ad6f8",
               "size": 3057
             },
             "config.json": {
               "sha256": "b467d52646e43dc618da0c00b0a3eeeb5fd855c55135da0fd6182f0fdc256dc6",
               "size": 96
             },
-            "main.esp32p4.aot": {
-              "sha256": "28975f3f543403987ccd7648c57a798a9a34d75033e804ca80386bc98f762f10",
-              "size": 294194
+            "main.esp32p4.f1.aot": {
+              "sha256": "e0a3775893fbe9a26289b7aeeae8009105d83d37e4ed8af030f1c22e47ec52b3",
+              "size": 294157
             },
-            "main.esp32s3.aot": {
-              "sha256": "a63d37fce5fc3036e95ab21b293cf4f02924b5e2002aedae3fbd344a6328746f",
-              "size": 289698
+            "main.esp32s3.f1.aot": {
+              "sha256": "2bd7ab2eb029a11a488fbd7acece7b4e5f5c666cb2ade28810e4128994497c37",
+              "size": 289661
             },
             "main.wasm": {
               "sha256": "ab8da5842c9317094b7f6317b7130d655b48e19499b716121494fc0df175579c",
@@ -193,26 +193,26 @@
       "source_asset": {
         "name": "teapot-v1-source.tar.gz",
         "url": "https://github.com/moybyte-org/mit-carts/releases/download/teapot-v1/teapot-v1-source.tar.gz",
-        "size": 242774,
-        "sha256": "8533237152d250503ddb85156d9f4085fda4bf2d2d01bfa18700f8495332362d"
+        "size": 244892,
+        "sha256": "cc60f12e9fc45e796a494879f164aeee3d104f3b9052de9f0a013a2b17cea0e9"
       },
       "external": [],
       "build": {
-        "commit": "e2154aeb0d933eb0cf36e97c56cc4140613fa065",
+        "commit": "36ea8cc40d19b63d5cfca954766f8c94a3205c3a",
         "keys": {
-          "esp32p4": "fork a7b71791f0e7b36e34d7d8abaef57b1d64d6f8e7\ntarget riscv32\ncpu generic-rv32\nabi ilp32f\nfeatures +m,+a,+f,+c,+fast-unaligned-access\nopt 3\nsize 3\nbounds 1\nstack-bounds 1\nxip 0\n",
-          "esp32s3": "fork a7b71791f0e7b36e34d7d8abaef57b1d64d6f8e7\ntarget xtensa\ncpu esp32s3\nabi -\nfeatures -\nopt 3\nsize 0\nbounds 1\nstack-bounds 1\nxip 0\n"
+          "esp32p4": "format 1\ntarget riscv32\ncpu generic-rv32\nabi ilp32f\nfeatures +m,+a,+f,+c,+fast-unaligned-access\nopt 3\nsize 3\nbounds 1\nstack-bounds 1\nxip 0\n",
+          "esp32s3": "format 1\ntarget xtensa\ncpu esp32s3\nabi -\nfeatures -\nopt 3\nsize 0\nbounds 1\nstack-bounds 1\nxip 0\n"
         },
         "modules": {
           "esp32p4": {
-            "name": "main.esp32p4.aot",
-            "unsigned_sha256": "cd039877d0835af12cdbfcee06790179715e821ed1a9a0a01849227fa2da800c",
-            "unsigned_size": 293922
+            "name": "main.esp32p4.f1.aot",
+            "unsigned_sha256": "f4f36dcb0b189141d7dcda65148176dcbd9a1923b28604f8ebe548da36991de5",
+            "unsigned_size": 293885
           },
           "esp32s3": {
-            "name": "main.esp32s3.aot",
-            "unsigned_sha256": "cf8d2c81822a699f348a24808db75764ade2410f8f9a637855ce2c2841622b8a",
-            "unsigned_size": 289426
+            "name": "main.esp32s3.f1.aot",
+            "unsigned_sha256": "e7999294f3bfd315cbefbd85027edd4101377ad9113b1f6f1e04ca85c2958e18",
+            "unsigned_size": 289389
           }
         },
         "pins": {
@@ -227,10 +227,10 @@
             "url": "https://github.com/CubeCoders/JetExamples/tree/57b05a240f5bcaa02a18d62a1206ce7053dc09dc"
           },
           "moybyte": {
-            "commit": "b9793f974ff49332697806814210d5b9aa1512a5",
+            "commit": "925af7d360bc258b48f2eb0811f9787657c6d383",
             "note": "the module build path, scripts/build.py's MOYBYTE_FILES (in the source bundle under moybyte/); device/moy_ota.py only checks the signatures",
-            "tree_sha256": "db7e0713f2fc751c18d355a567953d5c9d446c92a73d3686f0c07ef85bbdc521",
-            "url": "https://github.com/moybyte-org/moybyte/tree/b9793f974ff49332697806814210d5b9aa1512a5"
+            "tree_sha256": "247340d28c544fd3ade3254f7fdd75f20ce2347d10865960086d5f59e9210948",
+            "url": "https://github.com/moybyte-org/moybyte/tree/925af7d360bc258b48f2eb0811f9787657c6d383"
           },
           "wamr-fork": {
             "commit": "a7b71791f0e7b36e34d7d8abaef57b1d64d6f8e7",
