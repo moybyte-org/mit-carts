@@ -167,7 +167,7 @@ MOYBYTE_JET = (
     "ports/jet/jet/src/TrigLUT.hpp",
 )
 MOYBYTE_FILES = MOYBYTE_TOOLS + MOYBYTE_JET
-MOYBYTE_TREE_SHA256 = "db7e0713f2fc751c18d355a567953d5c9d446c92a73d3686f0c07ef85bbdc521"
+MOYBYTE_TREE_SHA256 = "247340d28c544fd3ade3254f7fdd75f20ce2347d10865960086d5f59e9210948"
 MOYBYTE_MIT = ("tools/jet_cart.py", "tools/ota_sign.py", "tools/wasm_cart.py",
                "tools/wasm_module.py", "tools/wat.py", "native/moy_wasm/moy_wasm_key.h",
                "native/moycore/libmoy/moy_wasm.c")
