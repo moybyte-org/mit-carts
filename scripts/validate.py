@@ -98,13 +98,6 @@ def is_int(v, lo=0):
     return isinstance(v, int) and not isinstance(v, bool) and v >= lo
 
 
-def aot_name(main, chip):
-    """Where a board looks for its module beside `main` (moybyte's
-    tools/wasm_cart.py states the same rule)."""
-    stem = main[:-5] if main.endswith(".wasm") else main
-    return "%s.%s.aot" % (stem, chip)
-
-
 # -- 1. the schema -----------------------------------------------------------------
 
 
@@ -345,7 +338,19 @@ def check_carts(index, rep):
                 rep.error("%s: the url is not the release's asset" % aw)
             want = [main, "manifest.json", "LICENSES.txt", "SOURCE.txt"]
             if manifest.get("runtime") == "wasm":
-                want += [aot_name(main, chip) for chip in meta.get("chips", [])]
+                # The module's name is whatever moybyte's tools/wasm_cart.py
+                # (aot_name: chip + compiled-code format version) recorded it
+                # as at build time -- read from the build itself, never
+                # recomputed here, so a format-version bump cannot make this
+                # check stale the way a duplicated naming rule did once.
+                modules = entry.get("build", {}).get("modules", {})
+                for chip in meta.get("chips", []):
+                    name = modules.get(chip, {}).get("name")
+                    if not name:
+                        rep.error("%s: no recorded module name for %s"
+                                 % (aw, chip))
+                        continue
+                    want.append(name)
             for fn in want:
                 if fn not in files:
                     rep.error("%s: %s is missing" % (aw, fn))
