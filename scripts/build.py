@@ -108,7 +108,7 @@ REPO_URL = "https://github.com/" + REPO
 # Jet and the film code are CubeCoders' MIT, and the two pin files are
 # generated data naming the runtime fork.
 MOYBYTE_REPO = "moybyte-org/moybyte"
-MOYBYTE_COMMIT = "b9793f974ff49332697806814210d5b9aa1512a5"
+MOYBYTE_COMMIT = "925af7d360bc258b48f2eb0811f9787657c6d383"
 MOYBYTE_TOOLS = (
     "LICENSES/MIT.md",                      # the MIT text the tools' headers name
     "native/moy_wasm/moy_wasm_key.h",       # each chip's compiler flags and the signature layout
