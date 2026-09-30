@@ -1,0 +1,257 @@
+{
+  "version": 1,
+  "name": "Moybyte MIT carts",
+  "home": "https://github.com/moybyte-org/mit-carts",
+  "carts": [
+    {
+      "id": "esp88",
+      "name": "ESP 88",
+      "version": 1,
+      "folder": "esp88.moy",
+      "runtime": "wasm",
+      "memory": 27,
+      "chips": [
+        "esp32s3",
+        "esp32p4"
+      ],
+      "licence": {
+        "spdx": "MIT",
+        "name": "MIT License",
+        "url": "carts/esp88/LICENSES.txt",
+        "size": 1886,
+        "sha256": "b526fb14126ea64979b108de6980d36bab79794b0f642aba28014a2f114ff83f"
+      },
+      "source": "https://github.com/moybyte-org/mit-carts/tree/e2154aeb0d933eb0cf36e97c56cc4140613fa065/carts/esp88",
+      "release": "https://github.com/moybyte-org/mit-carts/releases/tag/esp88-v1",
+      "assets": [
+        {
+          "name": "esp88.moy.zip",
+          "url": "https://github.com/moybyte-org/mit-carts/releases/download/esp88-v1/esp88.moy.zip",
+          "size": 1415092,
+          "sha256": "fce1e4511e74077042319fcc636450eed33e410dbfa545da157af630444a303f",
+          "files": {
+            "LICENSES.txt": {
+              "sha256": "b526fb14126ea64979b108de6980d36bab79794b0f642aba28014a2f114ff83f",
+              "size": 1886
+            },
+            "SOURCE.txt": {
+              "sha256": "be550a5a929aa41f7a9152d9b9e1536e4fe0fe31d6c104de6ccc8af8540b7ae0",
+              "size": 3046
+            },
+            "assets.bin": {
+              "sha256": "475b8d26629209f8bcbac1684789d684a0efa2e48a62c019822fc19734c30eed",
+              "size": 192880
+            },
+            "config.json": {
+              "sha256": "d67c6a0fbea4ee776c04cb1455779681e6035e9f6a0fdc481fec133a761bd753",
+              "size": 67
+            },
+            "main.esp32p4.aot": {
+              "sha256": "67d7a2c498c6d7c35deb1bbe03be43a9687233b35736c29948cc762c0f7edd0d",
+              "size": 480610
+            },
+            "main.esp32s3.aot": {
+              "sha256": "9139d75832e8d1e100fa786546db963046e28662074183bb986246178a91ae1f",
+              "size": 494270
+            },
+            "main.wasm": {
+              "sha256": "868f17fb1d92f440923d6b3d1e6d86e2250930b596305704672694f0c50e47c5",
+              "size": 241203
+            },
+            "manifest.json": {
+              "sha256": "d22cfad8b77e5fc48c042af714344d45e0d0c83e383e9c55392827a10843b59a",
+              "size": 146
+            }
+          }
+        }
+      ],
+      "source_asset": {
+        "name": "esp88-v1-source.tar.gz",
+        "url": "https://github.com/moybyte-org/mit-carts/releases/download/esp88-v1/esp88-v1-source.tar.gz",
+        "size": 239335,
+        "sha256": "7a76d45ed5e62b487998a6ae7e2a4ed4e35d53b089b56aeabdb4d0d85a2d3301"
+      },
+      "external": [],
+      "build": {
+        "commit": "e2154aeb0d933eb0cf36e97c56cc4140613fa065",
+        "keys": {
+          "esp32p4": "fork a7b71791f0e7b36e34d7d8abaef57b1d64d6f8e7\ntarget riscv32\ncpu generic-rv32\nabi ilp32f\nfeatures +m,+a,+f,+c,+fast-unaligned-access\nopt 3\nsize 3\nbounds 1\nstack-bounds 1\nxip 0\n",
+          "esp32s3": "fork a7b71791f0e7b36e34d7d8abaef57b1d64d6f8e7\ntarget xtensa\ncpu esp32s3\nabi -\nfeatures -\nopt 3\nsize 0\nbounds 1\nstack-bounds 1\nxip 0\n"
+        },
+        "modules": {
+          "esp32p4": {
+            "name": "main.esp32p4.aot",
+            "unsigned_sha256": "27149637e16c6fe3bea666a44984f3aba4a395350e3d6b644520f4e4b867a704",
+            "unsigned_size": 480338
+          },
+          "esp32s3": {
+            "name": "main.esp32s3.aot",
+            "unsigned_sha256": "680cfed3b718235898aca3a8febdfc5b8e2495f3dfedbe6137e6864948be8631",
+            "unsigned_size": 493998
+          }
+        },
+        "pins": {
+          "jet": {
+            "commit": "19018b52c04d92c615d1ade2db5eb7198c7af21c",
+            "note": "as moybyte vendors it at the pinned commit (ports/jet/jet)",
+            "url": "https://github.com/CubeCoders/Jet/tree/19018b52c04d92c615d1ade2db5eb7198c7af21c"
+          },
+          "jetexamples": {
+            "commit": "57b05a240f5bcaa02a18d62a1206ce7053dc09dc",
+            "note": "the example the cart ports, and the film's code as moybyte vendors it (ports/jet/examples)",
+            "url": "https://github.com/CubeCoders/JetExamples/tree/57b05a240f5bcaa02a18d62a1206ce7053dc09dc"
+          },
+          "moybyte": {
+            "commit": "b9793f974ff49332697806814210d5b9aa1512a5",
+            "note": "the module build path, scripts/build.py's MOYBYTE_FILES (in the source bundle under moybyte/); device/moy_ota.py only checks the signatures",
+            "tree_sha256": "db7e0713f2fc751c18d355a567953d5c9d446c92a73d3686f0c07ef85bbdc521",
+            "url": "https://github.com/moybyte-org/moybyte/tree/b9793f974ff49332697806814210d5b9aa1512a5"
+          },
+          "wamr-fork": {
+            "commit": "a7b71791f0e7b36e34d7d8abaef57b1d64d6f8e7",
+            "note": "the runtime the modules are keyed for; a board built for another refuses them",
+            "url": "https://github.com/moybyte-org/wasm-micro-runtime/tree/a7b71791f0e7b36e34d7d8abaef57b1d64d6f8e7"
+          },
+          "wamrc-riscv32": {
+            "sha256": "56622550bcf42dde5f9f52305e4fe396ca0be357b698203fad55b369e985e85d",
+            "url": "https://github.com/moybyte-org/wasm-micro-runtime/releases/download/wamrc-2.4.5-moybyte-3/wamrc-riscv32"
+          },
+          "wamrc-xtensa": {
+            "sha256": "56622550bcf42dde5f9f52305e4fe396ca0be357b698203fad55b369e985e85d",
+            "url": "https://github.com/moybyte-org/wasm-micro-runtime/releases/download/wamrc-2.4.5-moybyte-3/wamrc-xtensa"
+          },
+          "wasi-sdk": {
+            "sha256": "c6c38aab56e5de88adf6c1ebc9c3ae8da72f88ec2b656fb024eda8d4167a0bc5",
+            "url": "https://github.com/WebAssembly/wasi-sdk/releases/download/wasi-sdk-24/wasi-sdk-24.0-x86_64-linux.tar.gz",
+            "version": "24.0"
+          }
+        }
+      }
+    },
+    {
+      "id": "teapot",
+      "name": "Jet Teapot",
+      "version": 1,
+      "folder": "teapot.moy",
+      "runtime": "wasm",
+      "memory": 13,
+      "chips": [
+        "esp32s3",
+        "esp32p4"
+      ],
+      "licence": {
+        "spdx": "MIT",
+        "name": "MIT License",
+        "url": "carts/teapot/LICENSES.txt",
+        "size": 2695,
+        "sha256": "bdb7ed2382102071ea37616de813c9d84c4b6a1234f3d4294fa2efd7cedd68f3"
+      },
+      "source": "https://github.com/moybyte-org/mit-carts/tree/e2154aeb0d933eb0cf36e97c56cc4140613fa065/carts/teapot",
+      "release": "https://github.com/moybyte-org/mit-carts/releases/tag/teapot-v1",
+      "assets": [
+        {
+          "name": "teapot.moy.zip",
+          "url": "https://github.com/moybyte-org/mit-carts/releases/download/teapot-v1/teapot.moy.zip",
+          "size": 843436,
+          "sha256": "91b5890352004c142a179bc48b69f59acd1f46773acbf58351a8dee5c6235678",
+          "files": {
+            "LICENSES.txt": {
+              "sha256": "bdb7ed2382102071ea37616de813c9d84c4b6a1234f3d4294fa2efd7cedd68f3",
+              "size": 2695
+            },
+            "SOURCE.txt": {
+              "sha256": "a3815d6c8297cd5a3cdd307c9c27ecccb1583697ef7cb30a282c37250447ed88",
+              "size": 3057
+            },
+            "config.json": {
+              "sha256": "b467d52646e43dc618da0c00b0a3eeeb5fd855c55135da0fd6182f0fdc256dc6",
+              "size": 96
+            },
+            "main.esp32p4.aot": {
+              "sha256": "28975f3f543403987ccd7648c57a798a9a34d75033e804ca80386bc98f762f10",
+              "size": 294194
+            },
+            "main.esp32s3.aot": {
+              "sha256": "a63d37fce5fc3036e95ab21b293cf4f02924b5e2002aedae3fbd344a6328746f",
+              "size": 289698
+            },
+            "main.wasm": {
+              "sha256": "ab8da5842c9317094b7f6317b7130d655b48e19499b716121494fc0df175579c",
+              "size": 149648
+            },
+            "manifest.json": {
+              "sha256": "706fb16200206921277e949eaac7db686ab92aea95f31fe461605e4b9d3fdde7",
+              "size": 150
+            },
+            "teapot.obj": {
+              "sha256": "106598e3fefe1fba3434231adeebf7d9aa4911c4a90578f8131f185d09721bd7",
+              "size": 102898
+            }
+          }
+        }
+      ],
+      "source_asset": {
+        "name": "teapot-v1-source.tar.gz",
+        "url": "https://github.com/moybyte-org/mit-carts/releases/download/teapot-v1/teapot-v1-source.tar.gz",
+        "size": 242774,
+        "sha256": "8533237152d250503ddb85156d9f4085fda4bf2d2d01bfa18700f8495332362d"
+      },
+      "external": [],
+      "build": {
+        "commit": "e2154aeb0d933eb0cf36e97c56cc4140613fa065",
+        "keys": {
+          "esp32p4": "fork a7b71791f0e7b36e34d7d8abaef57b1d64d6f8e7\ntarget riscv32\ncpu generic-rv32\nabi ilp32f\nfeatures +m,+a,+f,+c,+fast-unaligned-access\nopt 3\nsize 3\nbounds 1\nstack-bounds 1\nxip 0\n",
+          "esp32s3": "fork a7b71791f0e7b36e34d7d8abaef57b1d64d6f8e7\ntarget xtensa\ncpu esp32s3\nabi -\nfeatures -\nopt 3\nsize 0\nbounds 1\nstack-bounds 1\nxip 0\n"
+        },
+        "modules": {
+          "esp32p4": {
+            "name": "main.esp32p4.aot",
+            "unsigned_sha256": "cd039877d0835af12cdbfcee06790179715e821ed1a9a0a01849227fa2da800c",
+            "unsigned_size": 293922
+          },
+          "esp32s3": {
+            "name": "main.esp32s3.aot",
+            "unsigned_sha256": "cf8d2c81822a699f348a24808db75764ade2410f8f9a637855ce2c2841622b8a",
+            "unsigned_size": 289426
+          }
+        },
+        "pins": {
+          "jet": {
+            "commit": "19018b52c04d92c615d1ade2db5eb7198c7af21c",
+            "note": "as moybyte vendors it at the pinned commit (ports/jet/jet)",
+            "url": "https://github.com/CubeCoders/Jet/tree/19018b52c04d92c615d1ade2db5eb7198c7af21c"
+          },
+          "jetexamples": {
+            "commit": "57b05a240f5bcaa02a18d62a1206ce7053dc09dc",
+            "note": "the example the cart ports, and the film's code as moybyte vendors it (ports/jet/examples)",
+            "url": "https://github.com/CubeCoders/JetExamples/tree/57b05a240f5bcaa02a18d62a1206ce7053dc09dc"
+          },
+          "moybyte": {
+            "commit": "b9793f974ff49332697806814210d5b9aa1512a5",
+            "note": "the module build path, scripts/build.py's MOYBYTE_FILES (in the source bundle under moybyte/); device/moy_ota.py only checks the signatures",
+            "tree_sha256": "db7e0713f2fc751c18d355a567953d5c9d446c92a73d3686f0c07ef85bbdc521",
+            "url": "https://github.com/moybyte-org/moybyte/tree/b9793f974ff49332697806814210d5b9aa1512a5"
+          },
+          "wamr-fork": {
+            "commit": "a7b71791f0e7b36e34d7d8abaef57b1d64d6f8e7",
+            "note": "the runtime the modules are keyed for; a board built for another refuses them",
+            "url": "https://github.com/moybyte-org/wasm-micro-runtime/tree/a7b71791f0e7b36e34d7d8abaef57b1d64d6f8e7"
+          },
+          "wamrc-riscv32": {
+            "sha256": "56622550bcf42dde5f9f52305e4fe396ca0be357b698203fad55b369e985e85d",
+            "url": "https://github.com/moybyte-org/wasm-micro-runtime/releases/download/wamrc-2.4.5-moybyte-3/wamrc-riscv32"
+          },
+          "wamrc-xtensa": {
+            "sha256": "56622550bcf42dde5f9f52305e4fe396ca0be357b698203fad55b369e985e85d",
+            "url": "https://github.com/moybyte-org/wasm-micro-runtime/releases/download/wamrc-2.4.5-moybyte-3/wamrc-xtensa"
+          },
+          "wasi-sdk": {
+            "sha256": "c6c38aab56e5de88adf6c1ebc9c3ae8da72f88ec2b656fb024eda8d4167a0bc5",
+            "url": "https://github.com/WebAssembly/wasi-sdk/releases/download/wasi-sdk-24/wasi-sdk-24.0-x86_64-linux.tar.gz",
+            "version": "24.0"
+          }
+        }
+      }
+    }
+  ]
+}
