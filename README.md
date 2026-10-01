@@ -44,7 +44,7 @@ where the carts change.
 ```
 python3 scripts/build.py teapot --unsigned -o ~/teapot-build
 python3 install.py teapot /path/to/sdcard/moybyte/carts --build ~/teapot-build
-python3 scripts/build.py teapot --verify-release teapot.moy.zip teapot-v1-source.tar.gz
+python3 scripts/build.py teapot --verify-release teapot.moy.zip teapot-v2-source.tar.gz
 ```
 
 Only maintainers can sign a release. A cart you built yourself is unsigned, so

@@ -7,7 +7,7 @@
     python3 scripts/build.py teapot --twice     # ...then again from scratch; every byte must match
     python3 scripts/build.py teapot --moybyte ~/src/moybyte
     python3 scripts/build.py teapot --unsigned -o ~/teapot-build   # no key needed
-    python3 scripts/build.py teapot --verify-release teapot.moy.zip teapot-v1-source.tar.gz
+    python3 scripts/build.py teapot --verify-release teapot.moy.zip teapot-v2-source.tar.gz
 
 This is gpl-carts' build (moybyte-org/gpl-carts, scripts/build.py): the two
 repositories build and publish their carts the same way, and differ in the
@@ -108,7 +108,7 @@ REPO_URL = "https://github.com/" + REPO
 # Jet and the film code are CubeCoders' MIT, and the two pin files are
 # generated data naming the runtime fork.
 MOYBYTE_REPO = "moybyte-org/moybyte"
-MOYBYTE_COMMIT = "925af7d360bc258b48f2eb0811f9787657c6d383"
+MOYBYTE_COMMIT = "eefdf0fd7f3d1be010eaf3045e81b01900071646"
 MOYBYTE_TOOLS = (
     "LICENSES/MIT.md",                      # the MIT text the tools' headers name
     "native/moy_wasm/moy_wasm_key.h",       # each chip's compiler flags and the signature layout
@@ -167,7 +167,7 @@ MOYBYTE_JET = (
     "ports/jet/jet/src/TrigLUT.hpp",
 )
 MOYBYTE_FILES = MOYBYTE_TOOLS + MOYBYTE_JET
-MOYBYTE_TREE_SHA256 = "247340d28c544fd3ade3254f7fdd75f20ce2347d10865960086d5f59e9210948"
+MOYBYTE_TREE_SHA256 = "089f2bf972c78a621fe20be5c759d19b098ad5dc8d58baf59585c335d262000c"
 MOYBYTE_MIT = ("tools/jet_cart.py", "tools/ota_sign.py", "tools/wasm_cart.py",
                "tools/wasm_module.py", "tools/wat.py", "native/moy_wasm/moy_wasm_key.h",
                "native/moycore/libmoy/moy_wasm.c")
