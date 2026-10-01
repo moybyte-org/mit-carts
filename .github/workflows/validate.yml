@@ -4,7 +4,10 @@
 name: validate
 
 on:
+  # Branches only: a release's tag points at the commit it was built from,
+  # whose index predates the release; the release event checks it instead.
   push:
+    branches: ["**"]
   pull_request:
   release:
     types: [published]
