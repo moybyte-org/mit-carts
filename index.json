@@ -21,6 +21,13 @@
         "size": 1886,
         "sha256": "b526fb14126ea64979b108de6980d36bab79794b0f642aba28014a2f114ff83f"
       },
+      "cover": {
+        "url": "carts/esp88/cover.png",
+        "size": 20669,
+        "sha256": "55733716c5cb945d8f965b4b56cff155d992caef422c4850740dca038f778864",
+        "w": 128,
+        "h": 128
+      },
       "source": "https://github.com/moybyte-org/mit-carts/tree/156413ab2a8934f80923a95ae49214bc8c937309/carts/esp88",
       "release": "https://github.com/moybyte-org/mit-carts/releases/tag/esp88-v2",
       "assets": [
@@ -145,6 +152,13 @@
         "url": "carts/teapot/LICENSES.txt",
         "size": 2695,
         "sha256": "bdb7ed2382102071ea37616de813c9d84c4b6a1234f3d4294fa2efd7cedd68f3"
+      },
+      "cover": {
+        "url": "carts/teapot/cover.png",
+        "size": 7535,
+        "sha256": "98b5541cff95dc87a703a0244b97b5307d8e997f81e644a35715aa18a96a68ae",
+        "w": 128,
+        "h": 128
       },
       "source": "https://github.com/moybyte-org/mit-carts/tree/156413ab2a8934f80923a95ae49214bc8c937309/carts/teapot",
       "release": "https://github.com/moybyte-org/mit-carts/releases/tag/teapot-v2",

@@ -23,7 +23,11 @@ It builds nothing, signs nothing and needs no secret. It checks:
      (a draft answers 404 to everyone without write access) is a warning, and
      an error with --strict, which the workflow passes when a release is
      published;
-  4. the whole history, every ref: no WAD and no private key was ever
+  4. every cover: carts/<id>/cover.png and the index's cover entry name the
+     same file, and it keeps to moy-spec SPEC.md 3.6's profile (cover_problem)
+     -- in the repository and in any release asset that carries one. A cart
+     without a cover is valid;
+  5. the whole history, every ref: no WAD and no private key was ever
      committed -- by file name, and by content (a WAD's IWAD/PWAD magic, a
      PEM or OpenSSH private key block).
 
@@ -37,12 +41,14 @@ import io
 import json
 import os
 import re
+import struct
 import subprocess
 import sys
 import tarfile
 import urllib.error
 import urllib.request
 import zipfile
+import zlib
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 CARTS = os.path.join(ROOT, "carts")
@@ -96,6 +102,104 @@ def plain_name(name):
 
 def is_int(v, lo=0):
     return isinstance(v, int) and not isinstance(v, bool) and v >= lo
+
+
+# -- covers -----------------------------------------------------------------------
+
+COVER_SIZE = 128
+COVER_MAX_BYTES = 65536
+
+
+def _unfilter(ft, line, prev, bpp):
+    out = bytearray(len(line))
+    for i in range(len(line)):
+        a = out[i - bpp] if i >= bpp else 0
+        b = prev[i]
+        c = prev[i - bpp] if i >= bpp else 0
+        if ft == 0:
+            p = 0
+        elif ft == 1:
+            p = a
+        elif ft == 2:
+            p = b
+        elif ft == 3:
+            p = (a + b) >> 1
+        else:
+            q = a + b - c
+            pa, pb, pc = abs(q - a), abs(q - b), abs(q - c)
+            p = a if (pa <= pb and pa <= pc) else (b if pb <= pc else c)
+        out[i] = (line[i] + p) & 0xFF
+    return out
+
+
+def cover_problem(data):
+    """None for a cover a console shows, else why it ignores the file:
+    moy-spec SPEC.md 3.6's profile -- PNG, bit depth 8, non-interlaced, colour
+    type 3 (a PLTE of 1-256 entries before the image data) or 2, no tRNS,
+    exactly 128x128, at most 65,536 bytes; image data that inflates to
+    exactly its rows, filter types 0-4, and no pixel past the PLTE. CRCs are
+    not checked, as a console need not. moy-spec's conformance/covers/ holds
+    the cases."""
+    if len(data) > COVER_MAX_BYTES:
+        return "it is %d bytes, and a cover is at most %d" % (len(data), COVER_MAX_BYTES)
+    if data[:8] != b"\x89PNG\r\n\x1a\n":
+        return "it is not a PNG"
+    pos, head, plte, idat = 8, None, None, b""
+    while True:
+        if pos + 8 > len(data):
+            return "it ends before IEND"
+        n, tag = struct.unpack(">I4s", data[pos:pos + 8])
+        body = data[pos + 8:pos + 8 + n]
+        if len(body) != n:
+            return "its %r chunk runs past the end" % tag
+        pos += 12 + n
+        if head is None:
+            if tag != b"IHDR" or n != 13:
+                return "its first chunk is not IHDR"
+            head = struct.unpack(">IIBBBBB", body)
+        elif tag == b"IDAT":
+            idat += body
+        elif tag == b"PLTE":
+            if head[3] == 3:
+                if idat:
+                    return "its PLTE comes after the image data"
+                if n % 3 or not 3 <= n <= 768:
+                    return "its PLTE is not 1-256 entries"
+                plte = body
+        elif tag == b"tRNS":
+            return "it has a tRNS chunk"
+        elif tag == b"IEND":
+            break
+        elif not tag[0] & 0x20:
+            return "it has a critical chunk %r a cover has not" % tag
+    w, h, depth, ctype, comp, filt, interlace = head
+    if (w, h) != (COVER_SIZE, COVER_SIZE):
+        return "it is %dx%d, and a cover is %dx%d" % (w, h, COVER_SIZE, COVER_SIZE)
+    if depth != 8 or ctype not in (2, 3) or comp or filt or interlace:
+        return ("it is colour type %d at bit depth %d%s; a cover is 8-bit indexed or RGB, "
+                "not interlaced" % (ctype, depth, ", interlaced" if interlace else ""))
+    if ctype == 3 and plte is None:
+        return "it is indexed and has no PLTE"
+    bpp = 3 if ctype == 2 else 1
+    stride = COVER_SIZE * bpp
+    want = COVER_SIZE * (stride + 1)
+    try:
+        z = zlib.decompressobj()
+        raw = z.decompress(idat, want + 1)
+    except zlib.error as exc:
+        return "its image data does not inflate (%s)" % exc
+    if len(raw) != want or not z.eof:
+        return "its image data is not %d rows of %d bytes" % (COVER_SIZE, stride)
+    prev = bytearray(stride)
+    for y in range(COVER_SIZE):
+        ft = raw[y * (stride + 1)]
+        if ft > 4:
+            return "row %d names filter type %d" % (y, ft)
+        if ctype == 3:
+            prev = _unfilter(ft, raw[y * (stride + 1) + 1:(y + 1) * (stride + 1)], prev, 1)
+            if max(prev) >= len(plte) // 3:
+                return "a pixel names a palette entry past its PLTE"
+    return None
 
 
 # -- 1. the schema -----------------------------------------------------------------
@@ -225,6 +329,13 @@ def check_schema(index, rep):
                 need(arc, "size", "int", ew + " archive", rep)
                 need(arc, "sha256", "sha256", ew + " archive", rep)
                 need(arc, "member", str, ew + " archive", rep)
+        if "cover" in cart:
+            cw = where + " cover"
+            cover = need(cart, "cover", dict, where, rep)
+            check_file_ref(cover, cw, rep)
+            if cover is not None and not (cover.get("w") == COVER_SIZE
+                                          and cover.get("h") == COVER_SIZE):
+                rep.error("%s: w and h must be %d" % (cw, COVER_SIZE))
         build = need(cart, "build", dict, where, rep)
         if build is not None and not (isinstance(build.get("commit"), str)
                                       and HEX40.match(build["commit"])):
@@ -305,11 +416,24 @@ def check_carts(index, rep):
             if not os.path.isfile(os.path.join(CARTS, cid, *str(
                     ext.get("licence", {}).get("file")).split("/"))):
                 rep.error("carts/%s: the licence for %s is missing" % (cid, ext.get("path")))
+        has_cover = os.path.isfile(os.path.join(CARTS, cid, "cover.png"))
+        if has_cover:
+            why = cover_problem(repo_bytes(cid, "cover.png"))
+            if why:
+                rep.error("carts/%s/cover.png is outside SPEC.md 3.6's profile, so a console "
+                          "ignores it: %s. `moy build carts/%s` rewrites it" % (cid, why, cid))
         if cid not in entries:
             rep.warn("carts/%s is not in index.json yet (built and released, it will be)" % cid)
             continue
         entry = entries[cid]
         where = "index.json %s" % cid
+        if has_cover and "cover" not in entry:
+            rep.error("%s: carts/%s/cover.png is not in the index; run scripts/make_index.py"
+                      % (where, cid))
+        elif "cover" in entry and not has_cover:
+            rep.error("%s: names a cover, and carts/%s/cover.png is not there" % (where, cid))
+        elif has_cover:
+            same_file(entry["cover"], cid, "cover.png", where + " cover", rep)
         for key in ("name", "version", "folder", "chips"):
             if entry.get(key) != meta.get(key):
                 rep.error("%s: %s is %r; cart.json says %r"
@@ -437,6 +561,10 @@ def check_zip(cart, asset, data, where, rep):
             if len(body) != meta.get("size") or sha256(body) != meta.get("sha256"):
                 rep.error("%s: %s in the zip is not the index's" % (where, fn))
                 return False
+            if fn == "cover.png" and cover_problem(body):
+                rep.error("%s: its cover.png is outside SPEC.md 3.6's profile: %s"
+                          % (where, cover_problem(body)))
+                return False
     return True
 
 
@@ -532,7 +660,7 @@ def check_assets(index, rep, strict):
                       % (cart.get("id"), asset.get("name"), size))
 
 
-# -- 4. the history -------------------------------------------------------------------------
+# -- 5. the history -------------------------------------------------------------------------
 
 
 def check_history(rep):

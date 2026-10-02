@@ -14,8 +14,8 @@ the stage's path out of the binary, so the module does not depend on where it
 was built.
 
 A cart folder here holds cart.json, recipe.py and README.md for this
-repository, and everything else is the cart: its manifest, config, licences
-and data go into the release as they are, and its src/ is compiled.
+repository, and everything else is the cart: its manifest, config, cover,
+licences and data go into the release as they are, and its src/ is compiled.
 """
 
 import importlib.util

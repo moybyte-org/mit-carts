@@ -21,10 +21,14 @@ the cart over with Moybyte's `tools/push_cart.py`.
 
 ## Carts
 
-| cart | notes |
-|---|---|
-| [Jet Teapot](carts/teapot/) | The Utah teapot, lit and depth-buffered, with the camera yours. Runs on every console board. |
-| [ESP 88](carts/esp88/) | A two-minute neon city film in twelve cuts, played in a loop. Needs about 2.7 MB, so a board that cannot fit it shows a notice. |
+| | cart | notes |
+|---|---|---|
+| ![Jet Teapot](carts/teapot/cover.png) | [Jet Teapot](carts/teapot/) | The Utah teapot, lit and depth-buffered, with the camera yours. Runs on every console board. |
+| ![ESP 88](carts/esp88/cover.png) | [ESP 88](carts/esp88/) | A two-minute neon city film in twelve cuts, played in a loop. Needs about 2.7 MB, so a board that cannot fit it shows a notice. |
+
+Each picture is the cart's `cover.png`, the one a console's store and shelf
+show (moy-spec's SPEC.md 3.6). The index points at it on this site, so a new
+cover shows without a new release; the next release carries it in the cart too.
 
 ## Credits
 
@@ -46,6 +50,9 @@ python3 scripts/build.py teapot --unsigned -o ~/teapot-build
 python3 install.py teapot /path/to/sdcard/moybyte/carts --build ~/teapot-build
 python3 scripts/build.py teapot --verify-release teapot.moy.zip teapot-v2-source.tar.gz
 ```
+
+`--verify-release` rebuilds the cart from the checkout it runs in, so check a
+release from the commit it was built from (the index's `build.commit`).
 
 Only maintainers can sign a release. A cart you built yourself is unsigned, so
 turn on Unknown sources in the console's Settings to run it.
