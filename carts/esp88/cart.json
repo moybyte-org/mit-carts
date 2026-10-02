@@ -1,8 +1,8 @@
 {
   "id": "esp88",
   "name": "ESP 88",
-  "version": 2,
-  "release": "esp88-v2",
+  "version": 3,
+  "release": "esp88-v3",
   "folder": "esp88.moy",
   "chips": ["esp32s3", "esp32p4"],
   "licence": {
