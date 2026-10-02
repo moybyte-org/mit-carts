@@ -6,7 +6,7 @@
     {
       "id": "esp88",
       "name": "ESP 88",
-      "version": 2,
+      "version": 3,
       "folder": "esp88.moy",
       "runtime": "wasm",
       "memory": 27,
@@ -28,21 +28,21 @@
         "w": 128,
         "h": 128
       },
-      "source": "https://github.com/moybyte-org/mit-carts/tree/156413ab2a8934f80923a95ae49214bc8c937309/carts/esp88",
-      "release": "https://github.com/moybyte-org/mit-carts/releases/tag/esp88-v2",
+      "source": "https://github.com/moybyte-org/mit-carts/tree/8046235a7ccc50ceec4ae8a40908a966c569814f/carts/esp88",
+      "release": "https://github.com/moybyte-org/mit-carts/releases/tag/esp88-v3",
       "assets": [
         {
           "name": "esp88.moy.zip",
-          "url": "https://github.com/moybyte-org/mit-carts/releases/download/esp88-v2/esp88.moy.zip",
-          "size": 1212086,
-          "sha256": "57d0e64cbcaf2dc5604c449075943e29cac0a055b40d2c768be2bffdc4fcceb4",
+          "url": "https://github.com/moybyte-org/mit-carts/releases/download/esp88-v3/esp88.moy.zip",
+          "size": 1232869,
+          "sha256": "950df400c8e060b75cd73b356486752a8c39bd8aae12cc026f1931806631fa76",
           "files": {
             "LICENSES.txt": {
               "sha256": "b526fb14126ea64979b108de6980d36bab79794b0f642aba28014a2f114ff83f",
               "size": 1886
             },
             "SOURCE.txt": {
-              "sha256": "8863272baa18dbe99f2904070387ade46bf562e6791bbf052233f1a167db4018",
+              "sha256": "7f8f318e12b32d0d16fb24990a3c0a3e7717b248a793c0a5ea142d10ac0337f1",
               "size": 3046
             },
             "assets.bin": {
@@ -52,6 +52,10 @@
             "config.json": {
               "sha256": "d67c6a0fbea4ee776c04cb1455779681e6035e9f6a0fdc481fec133a761bd753",
               "size": 67
+            },
+            "cover.png": {
+              "sha256": "55733716c5cb945d8f965b4b56cff155d992caef422c4850740dca038f778864",
+              "size": 20669
             },
             "main.esp32p4.f2.aot": {
               "sha256": "fa3975063129049226543d3b6974c91ba3862e4ad3e76f1fa70b0a4e9eff026d",
@@ -73,14 +77,14 @@
         }
       ],
       "source_asset": {
-        "name": "esp88-v2-source.tar.gz",
-        "url": "https://github.com/moybyte-org/mit-carts/releases/download/esp88-v2/esp88-v2-source.tar.gz",
-        "size": 241536,
-        "sha256": "273a8fc507c90a5badc2a5998167cc140499d687a961650358bdccc27cea4cbd"
+        "name": "esp88-v3-source.tar.gz",
+        "url": "https://github.com/moybyte-org/mit-carts/releases/download/esp88-v3/esp88-v3-source.tar.gz",
+        "size": 263166,
+        "sha256": "247f848042d70417acd04be8a79cc13a8ca9593b464d23bf90c88b22f2ec854d"
       },
       "external": [],
       "build": {
-        "commit": "156413ab2a8934f80923a95ae49214bc8c937309",
+        "commit": "8046235a7ccc50ceec4ae8a40908a966c569814f",
         "keys": {
           "esp32p4": "format 2\ntarget riscv32\ncpu generic-rv32\nabi ilp32f\nfeatures +m,+a,+f,+c,+fast-unaligned-access\nopt 3\nsize 3\nbounds 1\nstack-bounds 1\nxip 0\n",
           "esp32s3": "format 2\ntarget xtensa\ncpu esp32s3\nabi -\nfeatures -\nopt 3\nsize 0\nbounds 1\nstack-bounds 1\nxip 0\n"
@@ -138,7 +142,7 @@
     {
       "id": "teapot",
       "name": "Jet Teapot",
-      "version": 2,
+      "version": 3,
       "folder": "teapot.moy",
       "runtime": "wasm",
       "memory": 13,
@@ -160,26 +164,30 @@
         "w": 128,
         "h": 128
       },
-      "source": "https://github.com/moybyte-org/mit-carts/tree/156413ab2a8934f80923a95ae49214bc8c937309/carts/teapot",
-      "release": "https://github.com/moybyte-org/mit-carts/releases/tag/teapot-v2",
+      "source": "https://github.com/moybyte-org/mit-carts/tree/8046235a7ccc50ceec4ae8a40908a966c569814f/carts/teapot",
+      "release": "https://github.com/moybyte-org/mit-carts/releases/tag/teapot-v3",
       "assets": [
         {
           "name": "teapot.moy.zip",
-          "url": "https://github.com/moybyte-org/mit-carts/releases/download/teapot-v2/teapot.moy.zip",
-          "size": 778566,
-          "sha256": "9e2d42892b98f283de8a207c19b54aa62ca7df5dcfa742b8f41b8a14712a4e57",
+          "url": "https://github.com/moybyte-org/mit-carts/releases/download/teapot-v3/teapot.moy.zip",
+          "size": 786217,
+          "sha256": "38c6392a56cd4552914680e9cbfd8e911b949513dd7a71062b5e5d26ed8f6611",
           "files": {
             "LICENSES.txt": {
               "sha256": "bdb7ed2382102071ea37616de813c9d84c4b6a1234f3d4294fa2efd7cedd68f3",
               "size": 2695
             },
             "SOURCE.txt": {
-              "sha256": "1c200087f444b18c1f95e8560e23770adf2c883631a094032068d992aafb2e7f",
+              "sha256": "d1ec55cf31e89ae3db229aaad457c6dde6b9478b747abfd7bdcc12d3a42e0021",
               "size": 3057
             },
             "config.json": {
               "sha256": "b467d52646e43dc618da0c00b0a3eeeb5fd855c55135da0fd6182f0fdc256dc6",
               "size": 96
+            },
+            "cover.png": {
+              "sha256": "98b5541cff95dc87a703a0244b97b5307d8e997f81e644a35715aa18a96a68ae",
+              "size": 7535
             },
             "main.esp32p4.f2.aot": {
               "sha256": "35b9419313c95a440e4e8258280f8a22fbc379dbe107921bfcb086e782305413",
@@ -205,14 +213,14 @@
         }
       ],
       "source_asset": {
-        "name": "teapot-v2-source.tar.gz",
-        "url": "https://github.com/moybyte-org/mit-carts/releases/download/teapot-v2/teapot-v2-source.tar.gz",
-        "size": 244956,
-        "sha256": "f6b8afa63eb7f3102fde8f20b5c7e8457b502679d96402d4f596f7efdf0de8a2"
+        "name": "teapot-v3-source.tar.gz",
+        "url": "https://github.com/moybyte-org/mit-carts/releases/download/teapot-v3/teapot-v3-source.tar.gz",
+        "size": 253770,
+        "sha256": "390a78ec55a5f35eed5cdcf7f485989857ffa4aca934a0c1e9642115a122f2db"
       },
       "external": [],
       "build": {
-        "commit": "156413ab2a8934f80923a95ae49214bc8c937309",
+        "commit": "8046235a7ccc50ceec4ae8a40908a966c569814f",
         "keys": {
           "esp32p4": "format 2\ntarget riscv32\ncpu generic-rv32\nabi ilp32f\nfeatures +m,+a,+f,+c,+fast-unaligned-access\nopt 3\nsize 3\nbounds 1\nstack-bounds 1\nxip 0\n",
           "esp32s3": "format 2\ntarget xtensa\ncpu esp32s3\nabi -\nfeatures -\nopt 3\nsize 0\nbounds 1\nstack-bounds 1\nxip 0\n"
