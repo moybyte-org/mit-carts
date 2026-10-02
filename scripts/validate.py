@@ -23,11 +23,14 @@ It builds nothing, signs nothing and needs no secret. It checks:
      (a draft answers 404 to everyone without write access) is a warning, and
      an error with --strict, which the workflow passes when a release is
      published;
-  4. every cover: carts/<id>/cover.png and the index's cover entry name the
+  4. every release asset's mirror: the index names a copy of the asset at
+     releases/<tag>/<asset name>, where .github/workflows/pages.yml publishes
+     it beside the index for browsers, which cannot read a release download;
+  5. every cover: carts/<id>/cover.png and the index's cover entry name the
      same file, and it keeps to moy-spec SPEC.md 3.6's profile (cover_problem)
      -- in the repository and in any release asset that carries one. A cart
      without a cover is valid;
-  5. the whole history, every ref: no WAD and no private key was ever
+  6. the whole history, every ref: no WAD and no private key was ever
      committed -- by file name, and by content (a WAD's IWAD/PWAD magic, a
      PEM or OpenSSH private key block).
 
@@ -289,6 +292,9 @@ def check_schema(index, rep):
                 rep.error("%s: a hosted asset must be one of this repository's releases" % aw)
             need(asset, "size", "int", aw, rep)
             need(asset, "sha256", "sha256", aw, rep)
+            mirror = need(asset, "mirror", "relpath", aw, rep)
+            if mirror and name and mirror.rsplit("/", 1)[-1] != name:
+                rep.error("%s: the mirror must end in the asset's name" % aw)
             files = need(asset, "files", dict, aw, rep) or {}
             for fn, meta in files.items():
                 if not plain_name(fn):
@@ -460,6 +466,11 @@ def check_carts(index, rep):
             if asset.get("url") != "%s/releases/download/%s/%s" % (
                     REPO_URL, meta.get("release"), asset.get("name")):
                 rep.error("%s: the url is not the release's asset" % aw)
+            if asset.get("mirror") != "releases/%s/%s" % (meta.get("release"),
+                                                         asset.get("name")):
+                rep.error("%s: the mirror is not releases/%s/%s, where the Pages "
+                          "workflow publishes it; run scripts/make_index.py"
+                          % (aw, meta.get("release"), asset.get("name")))
             want = [main, "manifest.json", "LICENSES.txt", "SOURCE.txt"]
             if manifest.get("runtime") == "wasm":
                 # The module's name is whatever moybyte's tools/wasm_cart.py

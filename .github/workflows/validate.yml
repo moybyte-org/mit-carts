@@ -49,5 +49,5 @@ jobs:
         env:
           MOY: moy-spec/moy.py
         run: |
-          python -m py_compile install.py scripts/validate.py scripts/make_index.py moy-spec/cartindex.py
+          python -m py_compile install.py scripts/validate.py scripts/make_index.py scripts/pages.py moy-spec/cartindex.py
           python install.py --index index.json --list

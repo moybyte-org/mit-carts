@@ -19,6 +19,12 @@ the cart, checks every file against its hash, and writes a ready cart folder.
 For a board without an SD card, install to a folder on your computer and copy
 the cart over with Moybyte's `tools/push_cart.py`.
 
+A Moybyte console installs from the same index with its Get Carts app. A
+browser cannot read a GitHub release download (it sends no CORS header), so
+the index also names a **mirror** of each release asset on this repository's
+Pages site, `releases/<tag>/<asset>`, which a browser console reads instead.
+The release stays the canonical copy.
+
 ## Carts
 
 | | cart | notes |
@@ -56,3 +62,11 @@ release from the commit it was built from (the index's `build.commit`).
 
 Only maintainers can sign a release. A cart you built yourself is unsigned, so
 turn on Unknown sources in the console's Settings to run it.
+
+The Pages site -- `index.json`, the covers, the licence texts and the
+mirrors -- is deployed by `.github/workflows/pages.yml` once `validate` has
+passed on the default branch or on a published release. `scripts/pages.py`
+downloads each release asset the index names and checks it against the
+index's size and sha256 before the site is built; an index ahead of its
+release leaves the site as it was until the release is published.
+`scripts/make_index.py` writes the index, mirrors included.

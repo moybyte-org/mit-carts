@@ -6,8 +6,10 @@
     python3 scripts/make_index.py          # after scripts/build.py <id>
 
 This is moy's index maker (`moy index`, moy-spec's cartindex.py), which every
-Moybyte carts repository shares, run on this repository with its name and
-home. It finds moy the way install.py does.
+Moybyte carts repository shares, run on this repository with its name, its
+home and its MIRROR folder: each release asset is named again at
+releases/<tag>/<asset>, where .github/workflows/pages.yml publishes a checked
+copy beside the index for browsers. It finds moy the way install.py does.
 """
 
 import os
@@ -21,6 +23,7 @@ from install import find_moy  # noqa: E402
 
 NAME = "Moybyte MIT carts"
 HOME = "https://github.com/moybyte-org/mit-carts"
+MIRROR = "releases"
 
 
 def main():
@@ -29,7 +32,8 @@ def main():
         print("make_index: this is moy's index maker, and moy is not here (see "
               "install.py)", file=sys.stderr)
         return 2
-    return subprocess.call(moy + ["index", ROOT, "--name", NAME, "--home", HOME])
+    return subprocess.call(moy + ["index", ROOT, "--name", NAME, "--home", HOME,
+                                  "--mirror", MIRROR])
 
 
 if __name__ == "__main__":

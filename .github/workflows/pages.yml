@@ -1,0 +1,71 @@
+# The Pages site: the repository as Pages has always published it, plus a
+# checked copy of every release asset index.json names, at the asset's
+# "mirror" (releases/<tag>/<asset>). A browser can read this site and cannot
+# read a release download, so a browser console fetches carts from here.
+# scripts/pages.py says how the copies are checked.
+#
+# It deploys only what validate passed: a push to the default branch, or a
+# published release (validate re-checks the index's assets, now downloadable,
+# with --strict). Triggered by validate's run rather than by the release, so
+# the deployment comes from the default branch, which is what the
+# github-pages environment allows.
+name: pages
+
+on:
+  workflow_run:
+    workflows: [validate]
+    types: [completed]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      (github.event.workflow_run.conclusion == 'success' &&
+       (github.event.workflow_run.event == 'release' ||
+        (github.event.workflow_run.event == 'push' &&
+         github.event.workflow_run.head_branch == github.event.repository.default_branch)))
+    runs-on: ubuntu-latest
+    outputs:
+      ready: ${{ steps.mirror.outputs.ready }}
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: ${{ github.event.repository.default_branch }}
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+      # Into the checkout before the site build, which publishes them with
+      # every other file.
+      - name: The release assets, checked against index.json, at their mirrors
+        id: mirror
+        run: python3 scripts/pages.py
+      - uses: actions/configure-pages@v6
+        if: steps.mirror.outputs.ready == 'true'
+      - uses: actions/jekyll-build-pages@v1
+        if: steps.mirror.outputs.ready == 'true'
+        with:
+          source: ./
+          destination: ./_site
+      - uses: actions/upload-pages-artifact@v5
+        if: steps.mirror.outputs.ready == 'true'
+
+  deploy:
+    needs: build
+    if: needs.build.outputs.ready == 'true'
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v5

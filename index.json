@@ -34,6 +34,7 @@
         {
           "name": "esp88.moy.zip",
           "url": "https://github.com/moybyte-org/mit-carts/releases/download/esp88-v3/esp88.moy.zip",
+          "mirror": "releases/esp88-v3/esp88.moy.zip",
           "size": 1232869,
           "sha256": "950df400c8e060b75cd73b356486752a8c39bd8aae12cc026f1931806631fa76",
           "files": {
@@ -170,6 +171,7 @@
         {
           "name": "teapot.moy.zip",
           "url": "https://github.com/moybyte-org/mit-carts/releases/download/teapot-v3/teapot.moy.zip",
+          "mirror": "releases/teapot-v3/teapot.moy.zip",
           "size": 786217,
           "sha256": "38c6392a56cd4552914680e9cbfd8e911b949513dd7a71062b5e5d26ed8f6611",
           "files": {
